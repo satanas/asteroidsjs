@@ -1,6 +1,7 @@
 * Develop two versions of Asteroids using Javascript. One of them using CSS, the other one using Canvas.
 * Deadline will be Sep 29, 2011. All thursday we'll meet on #jsve in freenode at 22.00h VE to discuss individual progress and solve issues.
 * Previous wednesday must be defined the schedule of topics for the meeting in the mailing list [4]
+* Every meeting has a DIFFERENT secretary
 * You can't use ANY library. Pure Javascript
 
 References
@@ -8,4 +9,8 @@ References
 [2] http://en.wikipedia.org/wiki/Asteroids_(video_game)
 [3] http://yucazos.tumblr.com/post/9464854469/sadasant-persiguiendo-al-puntero-con-canvas-html5
 [4] http://groups.google.com/group/jsve
+[5] https://github.com/sadasant/sadasant/tree/master/codes/fromScratch
+[6] http://www.youtube.com/watch?v=0LKDImgRfrg&feature=youtu.be
+[7] http://stabyourself.net/
+[8] http://www.youtube.com/watch?v=_RRnyChxijA 
 
