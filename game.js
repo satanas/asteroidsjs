@@ -19,7 +19,7 @@ function Spaceship() {
     
     this.to_rad = function(deg) {
         return deg * Math.PI/180;
-    }
+    };
     
     this.rotate = function(dir) {
         if (dir == LEFT) {
@@ -36,7 +36,7 @@ function Spaceship() {
         this.image.style.mozTransform = 'rotate(' + this.angle +'deg)';
         this.image.style.oTransform = 'rotate(' + this.angle +'deg)';
         this.image.style.msTransform = 'rotate(' + this.angle +'deg)';
-    }
+    };
     
     this.accelerate = function(dir) {
         if (dir == UP) {
@@ -48,16 +48,16 @@ function Spaceship() {
             if (this.vel > max_laccel)
                 this.vel = max_laccel;
         }
-        this.vel_y = parseInt(this.vel * Math.sin(this.to_rad(this.angle)));
-        this.vel_x = parseInt(this.vel * Math.cos(this.to_rad(this.angle)));
-    }
+        this.vel_y = parseInt(this.vel * Math.sin(this.to_rad(this.angle)), 10);
+        this.vel_x = parseInt(this.vel * Math.cos(this.to_rad(this.angle)), 10);
+    };
     
     this.move = function(){
-        var top = parseInt(this.image.style.top.replace('px', ''));
+        var top = parseInt(this.image.style.top.replace('px', ''), 10);
         if (isNaN(top))
             top = 0;
         top +=  this.vel_y;
-        var left = parseInt(this.image.style.left.replace('px', '')) + this.vel_x;
+        var left = parseInt(this.image.style.left.replace('px', ''), 10) + this.vel_x;
         if (isNaN(left))
             left = 0;
         left += this.vel_x;
@@ -74,7 +74,7 @@ function Spaceship() {
             top = -31;
         this.image.style.top = top + 'px';
         this.image.style.left = left + 'px';
-    }
+    };
     
     this.start = setInterval(function() {self.move();}, 200);
 }
@@ -83,11 +83,6 @@ function initialize() {
     container = document.getElementById('container');
     spaceship = new Spaceship();
     spaceship.image = document.getElementById('spaceship');
-    
-    game_width = parseInt(container.offsetWidth);
-    game_height = parseInt(container.offsetHeight);
-    console.log(spaceship.image.offsetLeft, spaceship.image.offsetTop, spaceship.vel_x, game_width, game_height, spaceship.image.offsetHeight);
-    console.log(spaceship instanceof Spaceship);
     document.body.onkeydown = on_key_down;
 }
 
@@ -97,7 +92,7 @@ function on_key_down(e) {
     if (keycode == UP || keycode == DOWN) {
         spaceship.accelerate(keycode);
     } else if (keycode == LEFT || keycode == RIGHT) {
-        spaceship.rotate(keycode);;
+        spaceship.rotate(keycode);
     } else if (keycode == SPACE) {
         console.log('Shoot');
     }
