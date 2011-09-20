@@ -7,8 +7,7 @@ var SPACE = 32;
 var bindings = {};
 var laccel = 1; // Linear acceleration
 var aaccel = 5; // Angular acceleration
-var max_laccel = 20;
-var max_aaccel = 20;
+var max_laccel = 15;
 
 function Spaceship() {
     this.vel_x = 0;
@@ -24,9 +23,9 @@ function Spaceship() {
     
     this.rotate = function(dir) {
         if (dir == LEFT) {
-            this.angle -= aaccel;
-        } else {
             this.angle += aaccel;
+        } else {
+            this.angle -= aaccel;
         }
         if (this.angle < 0)
             this.angle = 359;
@@ -42,14 +41,18 @@ function Spaceship() {
     this.accelerate = function(dir) {
         if (dir == UP) {
             this.vel -= laccel;
+            if (this.vel < max_laccel)
+                this.vel = -max_laccel;
         } else {
             this.vel += laccel;
+            if (this.vel > max_laccel)
+                this.vel = max_laccel;
         }
+        this.vel_y = parseInt(this.vel * Math.sin(this.to_rad(this.angle)));
+        this.vel_x = parseInt(this.vel * Math.cos(this.to_rad(this.angle)));
     }
     
     this.move = function(){
-        this.vel_y = parseInt(this.vel * Math.sin(this.to_rad(this.angle)));
-        this.vel_x = parseInt(this.vel * Math.cos(this.to_rad(this.angle)));
         var top = parseInt(this.image.style.top.replace('px', ''));
         if (isNaN(top))
             top = 0;
@@ -59,11 +62,21 @@ function Spaceship() {
             left = 0;
         left += this.vel_x;
         console.log(this.vel_x, this.vel_y, this.image.style.top, this.image.style.left, top, left);
-        this.image.style.top = top ;
-        this.image.style.left = left;
+        
+        /* Handle world margins */
+        if (left <= -32)
+            left = 599;
+        else if (left >= 600)
+            left = -31;
+        if (top <= -32)
+            top = 599;
+        else if (top >= 600)
+            top = -31;
+        this.image.style.top = top + 'px';
+        this.image.style.left = left + 'px';
     }
     
-    this.start = setInterval(function() {self.move();}, 50);
+    this.start = setInterval(function() {self.move();}, 200);
 }
 
 function initialize() {
