@@ -1,0 +1,27 @@
+body {
+    background-color: #666;
+}
+p {
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#container {
+    background-color: #000;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+#spaceship {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
