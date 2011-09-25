@@ -22,4 +22,14 @@ p {
     position: relative;
     top: 0pt;
     left: 0pt;
+    width: 32px;
+    height: 32px;
+}
+
+.meteor {
+    position: relative;
+    top: 0pt;
+    left: 0pt;
+    width: 64px;
+    height: 64px;
 }
